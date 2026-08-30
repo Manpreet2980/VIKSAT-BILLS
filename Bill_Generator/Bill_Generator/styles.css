@@ -1,0 +1,89 @@
+/* Custom Styles for Viksat Data Solutions Bill & Quotation Generator */
+
+/* Remove browser headers/footers (top date, page title, URL) during print */
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  @page {
+    margin: 0 !important;
+    size: A4 portrait !important;
+  }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+    overflow: hidden !important;
+  }
+
+  /* Hide everything on the page except the #pdf-paper bill element */
+  body * {
+    visibility: hidden !important;
+  }
+
+  #pdf-paper, #pdf-paper * {
+    visibility: visible !important;
+  }
+
+  /* Pin #pdf-paper as the absolute single A4 page */
+  #pdf-paper {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    max-height: 297mm !important;
+    padding: 10mm 12mm !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    page-break-after: avoid !important;
+    page-break-before: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* Force side-by-side layouts in print mode */
+  .force-side-by-side {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+  }
+}
+
+/* Custom scrollbars */
+#items-form-container::-webkit-scrollbar {
+  width: 6px;
+}
+#items-form-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+#items-form-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+#items-form-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Precise A4 Preview layout tweaks */
+.a4-page {
+  box-sizing: border-box;
+}
+
+.item-row:nth-child(even) {
+  background-color: #f8fafc;
+}
